@@ -4,7 +4,7 @@
 #include "screen.h"
 #include <Windows.h>
 
-void Heal::healLife()
+void Heal::healMana()
 {
 	bool controle = false;
 	
@@ -19,7 +19,7 @@ void Heal::healLife()
 			{
 
 				t1->pressansy(0x70, 1);
-				std::cout << "imagem encontrada" << i << std::endl;
+				std::cout << "imagem encontrada mana" << i << std::endl;
 				controle = true;
 			}
 			else if(i == 3)
@@ -36,12 +36,13 @@ void Heal::healLife()
 		}
 	}
 }
-void Heal::healMana()
+void Heal::healLife()
 {
 	bool controle = false;
 
 	while (!controle)
 	{
+		std::lock_guard<std::mutex> lock(mutex);
 		Sleep(50);
 		s1->screenshotsave(caminhoPasta);
 		for (int i = 0; i <= caminhosMana.size(); i++)
@@ -68,4 +69,6 @@ void Heal::healMana()
 		}
 	}
 }
+
+
 
