@@ -12,7 +12,7 @@ void Heal::healMana()
 	{
 		Sleep(50);
 		s1->screenshotsave(caminhoPasta);
-		for(int i=0; i<=caminhosMana.size(); i++)
+		for(int i=0; i<=caminhosMana.size(); ++i)
 		{
 			auto result = s1->locatecenteronscreen(caminhoPasta,caminhosMana[i], 0.8);
 			if (result.first)
@@ -42,10 +42,9 @@ void Heal::healLife()
 
 	while (!controle)
 	{
-		std::lock_guard<std::mutex> lock(mutex);
 		Sleep(50);
 		s1->screenshotsave(caminhoPasta);
-		for (int i = 0; i <= caminhosMana.size(); i++)
+		for (int i = 0; i <= caminhosMana.size(); ++i)
 		{
 			auto result = s1->locatecenteronscreen(caminhoPasta, caminhosVida[i], 0.8);
 			if (result.first)
