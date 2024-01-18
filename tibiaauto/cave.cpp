@@ -1,7 +1,7 @@
 #include <iostream>
 #include "cave.h"
 #include "Windows.h"
-
+#include <vector>
 
 
 void Cave::walk()
@@ -25,10 +25,20 @@ void Cave::walk()
 }
 void Cave::atk()
 {
-	auto battle = s1->locateonscreen(caminhoMap, findBattle, 0.8);
-	if(battle.first)
-	{
-		l1->looting();
+	while (true) {
+		s1->screenshotsave(caminhoMap);
+		auto battle = s1->locateonscreen(caminhoMap, findBattle, 0.8);
+		if(battle.first)
+		{
+			l1->looting();
+		}
+		else
+		{
+			std::vector <std::pair<BYTE, BYTE>> atks = { {0x46, 0x20}, {0x48, 0x49}, {0x50, 0x51} };
+			std::cout << "primeiro par: " << atks[0].first <<  " " << atks[0].second << std::endl;
+
+		}
+
 	}
 
 }
